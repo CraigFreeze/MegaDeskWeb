@@ -21,8 +21,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="DeskQuote.RushDays" class="control-label"></label>
-                <input asp-for="DeskQuote.RushDays" class="form-control" />
-                <span asp-validation-for="DeskQuote.RushDays" class="text-danger"></span>
+                <select asp-for="DeskQuote.RushDays" class="form-control">
+                    <option value="0">none - 14 Days</option>
+                    <option value="3">3 Days</option>
+                    <option value="5">5 Days</option>
+                    <option value="7">7 days</option>
+                </select>
             </div>
             <div class="form-group">
                 <label asp-for="DeskQuote.Width" class="control-label"></label>
@@ -41,8 +45,13 @@
             </div>
             <div class="form-group">
                 <label asp-for="DeskQuote.Material" class="control-label"></label>
-                <input asp-for="DeskQuote.Material" class="form-control" />
-                <span asp-validation-for="DeskQuote.Material" class="text-danger"></span>
+                <select asp-for="DeskQuote.Material" class="form-control">
+                    <option value="">Select Surface Material</option>
+                    @foreach (var material in Enum.GetValues(typeof(MegaDeskWeb.Models.DesktopMaterial)))
+                    {
+                        <option value="@material">@material</option>
+                    }
+                </select>
             </div>
             <div class="form-group">
                 <label asp-for="DeskQuote.QuoteDate" class="control-label"></label>
