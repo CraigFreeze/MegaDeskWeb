@@ -1,4 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MegaDeskWeb.Data;
+using MegaDeskWeb.Models;
+using Microsoft.CodeAnalysis;
+using Microsoft.Extensions.DependencyInjection;
+
+
+
 
 namespace MegaDeskWeb.Models
 {
@@ -6,15 +13,15 @@ namespace MegaDeskWeb.Models
     {
         public static void Initialize(IServiceProvider serviceProvider)
         {
-            using var context = new Data.MegaDeskWebContext(
+            using var context = new MegaDeskWebContext(
             serviceProvider.GetRequiredService<
-                DbContextOptions<Data.MegaDeskWebContext>>());
+                DbContextOptions<MegaDeskWebContext>>());
             if (context == null || context.DeskQuote == null)
             {
-                throw new ArgumentNullException("Null MegaDeskRPContext");
+                throw new ArgumentNullException("Null MegaDeskWebPContext");
             }
 
-            // Look for any movies.
+            // Look for any quotes.
             if (context.DeskQuote.Any())
             {
                 return;   // DB has been seeded

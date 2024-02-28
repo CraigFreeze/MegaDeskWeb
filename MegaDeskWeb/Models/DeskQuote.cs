@@ -17,7 +17,7 @@ namespace MegaDeskWeb.Models
 
 
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string? Name { get; set; }
         public int RushDays { get; set; }
 
         [Range(24, 96, ErrorMessage = "Width must be between 24 and 96 inches")]

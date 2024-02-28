@@ -9,11 +9,11 @@ namespace MegaDeskWeb.Data
 {
     public class MegaDeskWebContext : DbContext
     {
-        public MegaDeskWebContext (DbContextOptions<MegaDeskWebContext> options)
+        public MegaDeskWebContext(DbContextOptions<MegaDeskWebContext> options)
             : base(options)
         {
         }
 
-        public DbSet<MegaDeskWeb.Models.DeskQuote> DeskQuote { get; set; } = default!;
+        public DbSet<DeskQuote> DeskQuote { get; set; } = default!;
     }
 }
