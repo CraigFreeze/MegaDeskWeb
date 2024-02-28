@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/MegaDeskWeb/MegaDeskWebContext-a92b6b2b-253b-4447-9d52-5b885b2ff65a.db
+/MegaDeskWeb/MegaDeskWebContext-a92b6b2b-253b-4447-9d52-5b885b2ff65a.db-shm
+/MegaDeskWeb/MegaDeskWebContext-a92b6b2b-253b-4447-9d52-5b885b2ff65a.db-wal
