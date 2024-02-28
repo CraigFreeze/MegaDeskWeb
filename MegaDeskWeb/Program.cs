@@ -1,6 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using MegaDeskWeb.Data;
+using MegaDeskWeb.Models;
+using MegaDeskWeb.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -8,7 +11,16 @@ builder.Services.AddRazorPages();
 builder.Services.AddDbContext<MegaDeskWebContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("MegaDeskWebContext") ?? throw new InvalidOperationException("Connection string 'MegaDeskWebContext' not found.")));
 
+builder.Services.AddScoped<DeskQuoteService>();
+
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+
+    SeedData.Initialize(services);
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

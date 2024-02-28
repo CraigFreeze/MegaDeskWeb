@@ -1,0 +1,19 @@
+﻿@page
+@model MegaDeskWeb.Pages.DisplayQuoteModel
+@{
+    ViewData["Title"] = "Display Quote";
+
+}
+
+<h1>Display Quote</h1>
+
+<div>
+    <p>Quote Date: @Model.QuoteDate</p>
+    <p>Customer Name: @Model.Name</p>
+    <p>Desk Width: @Model.Width</p>
+    <p>Desk Depth: @Model.Depth</p>
+    <p>Number of Drawers: @Model.DrawersNum</p>
+    <p>Surface Material: @Model.Material</p>
+    <p>Rush Order Days: @Model.RushDays</p>
+    <p>Quote Total: $@Model.QuoteTotal</p>
+</div>
