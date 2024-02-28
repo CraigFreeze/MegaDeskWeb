@@ -14,12 +14,12 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="DeskQuote.Name" class="control-label"></label>
+                <label asp-for="DeskQuote.Name" class="control-label">Customer Name:</label>
                 <input asp-for="DeskQuote.Name" class="form-control" />
                 <span asp-validation-for="DeskQuote.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DeskQuote.RushDays" class="control-label"></label>
+                <label asp-for="DeskQuote.RushDays" class="control-label">Rush Days:</label>
                 <select asp-for="DeskQuote.RushDays" class="form-control">
                     <option value="0">none - 14 Days</option>
                     <option value="3">3 Days</option>
@@ -29,22 +29,22 @@
                 </select>
             </div>
             <div class="form-group">
-                <label asp-for="DeskQuote.Width" class="control-label"></label>
+                <label asp-for="DeskQuote.Width" class="control-label">Width:</label>
                 <input asp-for="DeskQuote.Width" class="form-control" />
                 <span asp-validation-for="DeskQuote.Width" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DeskQuote.Depth" class="control-label"></label>
+                <label asp-for="DeskQuote.Depth" class="control-label">Depth:</label>
                 <input asp-for="DeskQuote.Depth" class="form-control" />
                 <span asp-validation-for="DeskQuote.Depth" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DeskQuote.DrawersNum" class="control-label"></label>
+                <label asp-for="DeskQuote.DrawersNum" class="control-label">Number of Drawers:</label>
                 <input asp-for="DeskQuote.DrawersNum" class="form-control" />
                 <span asp-validation-for="DeskQuote.DrawersNum" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DeskQuote.Material" class="control-label"></label>
+                <label asp-for="DeskQuote.Material" class="control-label">Desktop Material:</label>
                 <select asp-for="DeskQuote.Material" class="form-control">
                     <option value="">Select Surface Material</option>
                     @foreach (var material in Enum.GetValues(typeof(MegaDeskWeb.Models.DesktopMaterial)))
@@ -54,8 +54,13 @@
                 </select>
             </div>
             <div class="form-group">
-                <label asp-for="DeskQuote.QuoteDate" class="control-label"></label>
-                <input asp-for="DeskQuote.QuoteDate" class="form-control" />
+                <label asp-for="DeskQuote.QuoteDate" class="control-label">Quote Data</label>
+                <div class="input-group">
+                    <input asp-for="DeskQuote.QuoteDate" class="form-control" type="date" id="quoteDate"  />
+                    <div class="input-group-append">
+                        <button type="button" class="btn btn-outline-secondary" id="btnNow">Now</button>
+                    </div>
+                </div>
                 <span asp-validation-for="DeskQuote.QuoteDate" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -69,6 +74,17 @@
     <a asp-page="Index">Back to List</a>
 </div>
 
+
+
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        // Function to populate the date field with the current date
+        document.getElementById('btnNow').addEventListener('click', function () {
+            var now = new Date().toISOString().split('T')[0];
+            document.getElementById('quoteDate').value = now;
+        });
+    </script>
 }
+    
