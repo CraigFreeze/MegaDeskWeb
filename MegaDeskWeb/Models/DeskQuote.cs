@@ -17,7 +17,11 @@ namespace MegaDeskWeb.Models
 
 
         public int Id { get; set; }
+
+        [Display(Name = "Customer Name")]
         public string? Name { get; set; }
+
+        [Display(Name = "Shipping")]
         public int RushDays { get; set; }
 
         [Range(24, 96, ErrorMessage = "Width must be between 24 and 96 inches")]
@@ -26,10 +30,12 @@ namespace MegaDeskWeb.Models
         [Range(12, 48, ErrorMessage = "Depth must be between 12 and 48 inches")]
         public int Depth { get; set; }
 
+        [Display(Name = "Number of Drawers")]
         [Range(0, 7, ErrorMessage = "Number of drawers must be between 0 and 7")]
         public int DrawersNum { get; set; }
         public DesktopMaterial Material { get; set; }
 
+        [Display(Name = "Date")]
         [DataType(DataType.Date)]
         public DateTime QuoteDate { get; set; }
 

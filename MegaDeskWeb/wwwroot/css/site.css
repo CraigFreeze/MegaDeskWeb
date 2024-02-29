@@ -38,6 +38,9 @@ main {
     font-style: normal;
 }
 
+td {
+    text-align: center;
+}
 
 /* Layout Styling */
 .navbar {
@@ -150,6 +153,26 @@ img {
 #main-menu-div {
     display: flex;
     justify-content: center;
+}
+
+
+.links {
+    color: #113946;
+    font-size: 1.25em;
+    text-decoration: none;
+}
+
+
+/*Create Page Styling*/
+
+#create-btn {
+    background-color: #113946;
+    margin: 1em, 0;
+    border: none;
+}
+
+.btn-now {
+    margin-left: 1em;
 }
 
 @media screen and (min-width: 600px) {
