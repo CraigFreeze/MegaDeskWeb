@@ -42,6 +42,11 @@ td {
     text-align: center;
 }
 
+th {
+    color: #113946;
+    font-size: 1.2em;
+}
+
 /* Layout Styling */
 .navbar {
     background-color: #113946;
@@ -104,7 +109,9 @@ td {
 }
 
 
-
+#index-h1 {
+    margin-top: .5em;
+}
 
 /* Index View Styling */
 #main-menu-div {
@@ -127,34 +134,37 @@ td {
 .main-menu-p {
     border: 2px solid #113946;
     border-radius: 5px;
-    margin-top: 1.75em;
-    margin-bottom: 1.5em;
-    margin-right: auto;
-    margin-left: auto;
+    margin: .5em auto;
     width: 200px;
     background-color: white;
+  
 }
 
 #main-menu-image-div {
     padding: 1em;
     width: 100%;
     max-width: 500px;
+    margin: auto;
 }
 
 #main-menu-p-div {
-    padding: 2em;
+    padding: 1em;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
 }
 
 img {
-    width: 75%;
+    width: 100%;
     margin: auto;
 }
 
 #main-menu-div {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    margin-top: 1.5em;
 }
-
 
 .links {
     color: #113946;
@@ -163,8 +173,8 @@ img {
 }
 
 
-/*Create Page Styling*/
 
+/*Create Page Styling*/
 .create-btn {
     background-color: #113946;
     margin-top: 1em;
@@ -176,23 +186,24 @@ img {
     border-radius: 5px;
 }
 
+.th-links {
+    color: #113946;
+}
 
 #btnNow {
     margin-left: 1em;
 }
 
-@media screen and (min-width: 600px) {
-    #main-menu-div {
+
+@media screen and (min-width: 500px) {
+    #main-menu-p-div {
         display: flex;
         flex-direction: row;
     }
 
-    #main-menu-image-div {
-        padding: 1em;
-        width: 50%;
-    }
-
-    img {
-        width: 100%;
+    .main-menu-p {
+        margin: .5em;
     }
 }
+
+

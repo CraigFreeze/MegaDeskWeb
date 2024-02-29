@@ -10,11 +10,22 @@
 <p>
     <a asp-page="Create" class="links"><em>Add New Desk</em></a>
 </p>
+
+<form>
+    <p>
+        Search by Name: <input type="text" asp-for="SearchString">
+        <input type="submit" value="Filter">
+    </p>
+</form>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.DeskQuote[0].Name)
+                <a asp-page="/DeskQuotes/Index" asp-route-sortOrder="@Model.NameSort" class="th-links">
+                    <em>@Html.DisplayNameFor(model => model.DeskQuote[0].Name)</em>
+                </a>
+              
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DeskQuote[0].RushDays)
@@ -32,7 +43,10 @@
                 @Html.DisplayNameFor(model => model.DeskQuote[0].Material)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DeskQuote[0].QuoteDate)
+                <a asp-page="/DeskQuotes/Index" asp-route-sortOrder="@Model.DateSort" class="th-links">
+                    <em>@Html.DisplayNameFor(model => model.DeskQuote[0].QuoteDate)</em>
+                </a>
+              
             </th>
             <th></th>
         </tr>
