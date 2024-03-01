@@ -8,20 +8,26 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MegaDeskWeb.Data;
 using MegaDeskWeb.Models;
+using MegaDeskWeb.Services;
 
 namespace MegaDeskWeb.Pages.DeskQuotes
 {
     public class EditModel : PageModel
     {
+        private readonly DeskQuoteService _deskQuoteService;
         private readonly MegaDeskWeb.Data.MegaDeskWebContext _context;
 
-        public EditModel(MegaDeskWeb.Data.MegaDeskWebContext context)
+        public EditModel(DeskQuoteService deskQuoteService, MegaDeskWeb.Data.MegaDeskWebContext context)
         {
+            _deskQuoteService = deskQuoteService;
             _context = context;
         }
 
         [BindProperty]
         public DeskQuote DeskQuote { get; set; } = default!;
+
+        [BindProperty]
+        public decimal QuoteTotal { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -48,6 +54,9 @@ namespace MegaDeskWeb.Pages.DeskQuotes
                 return Page();
             }
 
+
+            QuoteTotal = _deskQuoteService.CalculateDeskQuoteTotal(DeskQuote);
+            DeskQuote.QuoteTotal = QuoteTotal;
             _context.Attach(DeskQuote).State = EntityState.Modified;
 
             try
