@@ -26,8 +26,58 @@ namespace MegaDeskWeb.Services
 
         public decimal CalculateRushOrderPrice(DeskQuote desk)
         {
+            int rushPrice = 0;
+            int deskArea = desk.Width * desk.Depth;
 
-            return 5 * desk.RushDays;
+            if (!(desk.RushDays == 14))
+            {
+                if (deskArea < 1000)
+                {
+                    switch (desk.RushDays)
+                    {
+                        case 3:
+                            rushPrice = 60;
+                            break;
+                        case 5:
+                            rushPrice = 40;
+                            break;
+                        case 7:
+                            rushPrice = 30;
+                            break;
+                    }
+                }
+                else if (deskArea > 2000)
+                {
+                    switch (desk.RushDays)
+                    {
+                        case 3:
+                            rushPrice = 80;
+                            break;
+                        case 5:
+                            rushPrice = 60;
+                            break;
+                        case 7:
+                            rushPrice = 40;
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (desk.RushDays)
+                    {
+                        case 3:
+                            rushPrice = 70;
+                            break;
+                        case 5:
+                            rushPrice = 50;
+                            break;
+                        case 7:
+                            rushPrice = 35;
+                            break;
+                    }
+                }
+            }
+            return rushPrice;
         }
 
         public decimal CalculateDeskAreaPrice(DeskQuote desk)
