@@ -39,9 +39,11 @@ namespace MegaDeskWeb.Models
         [DataType(DataType.Date)]
         public DateTime QuoteDate { get; set; }
 
+        public decimal QuoteTotal { get; set; }
         public DeskQuote()
         {
 
         }
+
     }
 }

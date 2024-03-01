@@ -48,7 +48,9 @@
                 </a>
               
             </th>
-            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeskQuote[0].QuoteTotal)
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -76,11 +78,12 @@
                 @Html.DisplayFor(modelItem => item.QuoteDate)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.QuoteTotal)
+            </td>
+            <td>
                 <a asp-page="./Edit" asp-route-id="@item.Id" class="links"><em>Edit</em></a> |
                 <a asp-page="./Details" asp-route-id="@item.Id" class="links"><em>Details</em></a> |
                 <a asp-page="./Delete" asp-route-id="@item.Id"class="links"><em>Delete</em></a> |
-                <a asp-page="./DisplayQuote" asp-route-id="@item.Id" class="links"><em>Display Quote</em></a>
-
             </td>
         </tr>
 }

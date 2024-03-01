@@ -17,8 +17,8 @@ namespace MegaDeskWeb.Pages.DeskQuotes
         private readonly MegaDeskWeb.Data.MegaDeskWebContext _context;
 
         public CreateModel(DeskQuoteService deskQuoteService, MegaDeskWeb.Data.MegaDeskWebContext context)
-        {
-            _deskQuoteService = deskQuoteService;
+        {            _deskQuoteService = deskQuoteService;
+
             _context = context;
         }
 
@@ -30,6 +30,7 @@ namespace MegaDeskWeb.Pages.DeskQuotes
         [BindProperty]
         public DeskQuote DeskQuote { get; set; } = default!;
 
+        [BindProperty]
         public decimal QuoteTotal { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
@@ -41,11 +42,15 @@ namespace MegaDeskWeb.Pages.DeskQuotes
             }
 
             QuoteTotal = _deskQuoteService.CalculateDeskQuoteTotal(DeskQuote);
+            DeskQuote.QuoteTotal = QuoteTotal;
 
             _context.DeskQuote.Add(DeskQuote);
+
+            //DeskQuote.QuoteTotal = Total;
+            
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("/DisplayQuote", new { customerName = DeskQuote.Name, width = DeskQuote.Width, depth = DeskQuote.Width, drawers = DeskQuote.DrawersNum, desktopMaterial = DeskQuote.Material, rush = DeskQuote.RushDays, date = DeskQuote.QuoteDate, quoteTotal = QuoteTotal });
+            return RedirectToPage("/DisplayQuote", new { customerName = DeskQuote.Name, width = DeskQuote.Width, depth = DeskQuote.Width, drawers = DeskQuote.DrawersNum, desktopMaterial = DeskQuote.Material, rush = DeskQuote.RushDays, date = DeskQuote.QuoteDate, quotetotal = QuoteTotal });
         }
     }
 }
